@@ -15,5 +15,7 @@
 
 5、如果是View则是空实现；如果是ViewGroup，dispatchDraw中会调用drawChild\(\)，实际上最终还是回到调用View或者ViewGroup的draw\(1\)方法中，继续重复；
 
+6、View、ViewGroup绘制完毕，开始绘制ViewOverlay和forground；
+
 [https://www.jianshu.com/p/ad63cba2a3c0](https://www.jianshu.com/p/ad63cba2a3c0)
 
