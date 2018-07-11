@@ -8,6 +8,8 @@
 * [自定义View](zi-ding-yi-view.md)
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
   * [Scroll](zi-ding-yi-view/scroll.md)
+* [Animation](animation.md)
+  * [PathAnimation](animation/pathanimation.md)
 * [8.0适配](80shi-pei.md)
   * [8.0设备实现截屏](80shi-pei/80she-bei-shi-xian-jie-ping.md)
 
