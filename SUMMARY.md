@@ -9,6 +9,7 @@
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
     * [实现RecyclerView顶部Header](zi-ding-yi-view/recyclerview/shi-xian-recyclerview-ding-bu-header.md)
     * 缓存
+    * [ItemDecoration](zi-ding-yi-view/recyclerview/itemdecoration.md)
   * [Scroll](zi-ding-yi-view/scroll.md)
 * [Animation](animation.md)
   * [PathAnimation](animation/pathanimation.md)
