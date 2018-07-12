@@ -4,6 +4,7 @@
 * [基础](chapter1.md)
   * [线程](chapter1/xian-cheng.md)
   * [设计模式](chapter1/she-ji-mo-shi.md)
+  * [事件分发机制](chapter1/shi-jian-fen-fa-ji-zhi.md)
 * OkHttp
 * [自定义View](zi-ding-yi-view.md)
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
