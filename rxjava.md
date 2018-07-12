@@ -6,6 +6,14 @@
 
 * RxJava是一种函数式编程的模式，每一个操作符实际上对应一种函数。对应有一致的输入和一致的输出。
 
+#### 线程切换
+
+* subscribeOn：用于切换Observable的线程，在第一次调用时有效，后面每次调用并不能切换Observable的线程，只能影响前面调用doOnSubscribe执行代码所在的线程；
+* ObserveOn：每次调用都能够影响其后除了doOnSubscribe之外，其余流程运行的线程；
+* doOnSubscribe：在流程中，越后调用，则越先被执行；其执行的线程由其后流程的第一个subscribeOn\(\)设置的线程决定；
+
+
+
 #### Subject
 
 Subject既可以作为Observable，也可以作为Observer；
