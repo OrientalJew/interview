@@ -1,6 +1,10 @@
 #### 事件分发机制
 
+> Activity和ViewGroup的onTouchEvent默认是不处理事件的，而View根据种类而定；
 
+![](/assets/事件分发机制.png)
+
+事件到来时，WindowManagerService回调Activity对应方法：Activity的dispatchTouchEvent最先拿到事件，此时Activity不会自己用，而是先调用子ViewGroup的dispatchTouchEvent，子ViewGroup并不是马上再调用子View的dispatchTouchEvent，而是先调用自己的onInterceptTouchEvent，判断自己是否需要事件：
 
 #### 正确拦截Touch事件
 
