@@ -12,11 +12,29 @@
 
 注意：mCachedViews中的ViewHolder虽然已经被remove出RecyclerView的child View集合中，但是其绑定的数据还是有效的，在被重新绑定回RecyclerView时，无需进行onBindViewHolder绑定数据的操作，直接layout到recyclerView中即可使用。
 
+> 回收时机：
+>
+> detachAndScrapAttachedViews\(recycler\);//detach轻量回收所有View
+>
+> detachAndScrapView\(view, recycler\);//detach轻量回收指定View
+
+
+
 * 二级缓存：detach后没有重用，或已经划出屏幕的ChildView，按ItemType将ViewHolder保存到RecyclerViewPool中；
 
 每种ViewType会相应缓存5个ViewHolder；
 
 这些ViewHolder不再与RecyclerView绑定，而且其中的数据也是无效的，处于半废弃状态，当要被重用时，其数据和状态都需要被重置；
+
+> 回收时机：
+>
+> removeAndRecycleView\(View child, Recycler recycler\)
+>
+> removeAndRecycleAllViews\(Recycler recycler\);
+>
+> removeAndRecycleScrapInt\(mRecycler\);
+>
+> recycleAndClearCachedViews\(\);
 
 
 
