@@ -10,6 +10,7 @@
   * [Scroll](zi-ding-yi-view/scroll.md)
 * [Animation](animation.md)
   * [PathAnimation](animation/pathanimation.md)
+  * [Transition](animation/transition.md)
 * [8.0适配](80shi-pei.md)
   * [8.0设备实现截屏](80shi-pei/80she-bei-shi-xian-jie-ping.md)
 
