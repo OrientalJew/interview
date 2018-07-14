@@ -7,6 +7,7 @@
   * [事件分发机制](chapter1/shi-jian-fen-fa-ji-zhi.md)
   * [Handler消息机制](chapter1/handlerxiao-xi-ji-zhi.md)
   * [Fragment](chapter1/fragment.md)
+  * [MVX](chapter1/mvx.md)
 * OkHttp
 * [自定义View](zi-ding-yi-view.md)
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
