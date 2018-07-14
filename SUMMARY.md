@@ -6,6 +6,7 @@
   * [设计模式](chapter1/she-ji-mo-shi.md)
   * [事件分发机制](chapter1/shi-jian-fen-fa-ji-zhi.md)
   * [Handler消息机制](chapter1/handlerxiao-xi-ji-zhi.md)
+  * [Fragment](chapter1/fragment.md)
 * OkHttp
 * [自定义View](zi-ding-yi-view.md)
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
