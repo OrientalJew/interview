@@ -3,8 +3,6 @@
 * 如果Fragment是通过FragmentManager进行show和hide操作导致的显隐的，可以通过onHiddenChanged和其他生命周期方法进行判断；
 * 如果Fragment是配合ViewPager进行显隐的，则通过Fragment的setUserVisibleHint进行判断；
 
-
-
 #### FragmentPagerAdapter与FragmentStatePagerAdapter的区别
 
 * 应用场景
@@ -19,7 +17,7 @@ FragmentPagerAdapter不会销毁Fragment实例，只是销毁Fragment的视图�
 
 FragmentStatePagerAdapter会完全销毁Fragment实例，在Fragment被销毁时，会执行到onDestory方法，如果要恢复成员变量，只能通过onSaveInstanceState来进行；
 
-
+#### 
 
 
 
