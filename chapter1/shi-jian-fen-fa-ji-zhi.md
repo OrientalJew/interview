@@ -4,7 +4,31 @@
 
 ![](/assets/事件分发机制.png)
 
-* 事件到来时，WindowManagerService回调Activity对应方法：Activity的dispatchTouchEvent最先拿到事件，此时Activity不会自己用，而是先调用子ViewGroup的dispatchTouchEvent，子ViewGroup并不是马上就调用子View的dispatchTouchEvent，而是先调用自己的onInterceptTouchEvent，判断自己是否需要事件：
+**一次触摸屏幕事件分发的过程：**
+
+* ViewGroup需要消耗Touch事件
+
+![](/assets/事件分发1.png)
+
+* 子View需要消耗Touch事件
+
+![](/assets/事件分发2.png)
+
+> 可以看出，在子View需要消耗Touch事件的情况下，后续事件仍然会一直走ViewGroup的onInterceptTouchEvent。
+
+* 子View不需要消耗Touch事件，ViewGroup需要消耗Touch事件
+
+![](/assets/事件分发4.png)
+
+> 子View不需要消耗Touch事件时，事件会交回给ViewGroup进行处理，如果此时ViewGroup需要处理Touch事件，则后续事件直接交给ViewGroup的onTouchEvent，不会再走onInterceptTouchEvent流程。
+
+* 子View和ViewGroup都不需要消耗Touch事件
+
+![](/assets/事件分发5.png)
+
+> 在子View和ViewGroup都不需要事件的情况下，事件最终会回到Activity的dispatchTouchEvent中，并交给onTouchEvent处理；
+>
+> 后续事件只会传递到Activity这一层上，不会继续往下传。
 
 #### 正确拦截Touch事件
 
