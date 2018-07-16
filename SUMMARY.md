@@ -8,6 +8,7 @@
   * [Handler消息机制](chapter1/handlerxiao-xi-ji-zhi.md)
   * [Fragment](chapter1/fragment.md)
   * [MVX](chapter1/mvx.md)
+* [数据解构](shu-ju-jie-gou.md)
 * OkHttp
 * [自定义View](zi-ding-yi-view.md)
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
