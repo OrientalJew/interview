@@ -87,3 +87,9 @@ LinkedHashMap支持两种顺序输出：
 
 
 
+#### TreeMap
+
+* 为什么TreeMap会自动排序数据？
+
+
+
