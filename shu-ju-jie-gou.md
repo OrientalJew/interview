@@ -77,9 +77,13 @@ LinkedHashMap于HashMap最大的区别在于，LinkedHashMap中链表结构不�
 
 通过这种双向链表的结构，我们可以非常方便的遍历到LinkedHashMap中的每一个数据。并且，正是因为这种结构，LinkedHashMap是有序的\(即使是通过扩容，打乱了每一个元素的存储位置，由于每个元素的头尾指针始终保持不变，所以双向链表的顺序不会受到任何影响\)。
 
+* 输出顺序
 
+LinkedHashMap支持两种顺序输出：
 
+1、insertion-order，按插入顺序输出，先进先出，即队列的形式输出。
 
+2、access-order，按LRU顺序输出，最近最少使用；使用的越多，排在队列越后，越快被输出。
 
 
 
