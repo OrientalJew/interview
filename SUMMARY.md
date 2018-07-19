@@ -9,6 +9,7 @@
   * [Fragment](chapter1/fragment.md)
   * [MVX](chapter1/mvx.md)
 * [数据解构](shu-ju-jie-gou.md)
+* [算法](suan-fa.md)
 * [OkHttp](okhttp.md)
 * [自定义View](zi-ding-yi-view.md)
   * [RecyclerView](zi-ding-yi-view/recyclerview.md)
