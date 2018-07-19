@@ -127,7 +127,39 @@
 
 从当前的排序的两端开始，向中间遍历，遍历的过程中不断的交换两端的元素，让序列逐渐形成一个中间值在中间，左边的元素都比中间值小，右边都比它大的情况。接着操作就是分治思想所在，以除去中间值的两边的序列为新的序列，采用上面相同的方式再找出两个子序列的中间值，不断重复，直到只剩下一个元素为止。
 
-此处的中间只是在理想状态下能够取到中间，实际上，取的基准值在序列中的排序的位置是不确定的，可以保证的是，最终基准值的左边都是小于它的元素，而右边都是大于它的元素。
+此处的中间只是在理想状态下能够取到中间值，实际上，我们通过提供第一个，最后一个或者中间的元素为作为基准值，取的基准值在序列中的排序的位置是不确定的，可以保证的是，最终排序后，基准值的左边都是小于它的元素，而右边都是大于它的元素。
+
+```
+    public static void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int middle = middle(arr, low, high);
+            quickSort(arr, low, middle - 1);
+            quickSort(arr, middle + 1, high);
+        }
+    }
+
+    private static int middle(int[] arr, int low, int high) {
+        int temp = arr[low];
+        while (low < high) {
+            while (low < high && arr[high] >= temp) {
+                high--;
+            }
+            arr[low] = arr[high];
+
+            while (low < high && arr[low] <= temp) {
+                low++;
+            }
+            arr[high] = arr[low];
+        }
+
+        arr[low] = temp;
+        return low;
+    }
+```
 
 
 
