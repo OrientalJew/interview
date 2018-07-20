@@ -30,7 +30,7 @@
 
 > 在子View和ViewGroup都不需要事件的情况下，事件最终会回到Activity的dispatchTouchEvent中，并交给onTouchEvent处理；
 >
-> 后续事件只会传递到Activity这一层上，不会继续往下传。
+> 同一次操作的后续事件只会传递到Activity这一层上，不会继续往下传。
 
 #### 正确拦截Touch事件
 
