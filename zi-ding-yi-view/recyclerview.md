@@ -18,8 +18,6 @@
 >
 > detachAndScrapView\(view, recycler\);//detach轻量回收指定View
 
-
-
 * 二级缓存：detach后没有重用，或已经划出屏幕的ChildView，按ItemType将ViewHolder保存到RecyclerViewPool中；
 
 每种ViewType会相应缓存5个ViewHolder；
