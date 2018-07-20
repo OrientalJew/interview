@@ -16,11 +16,13 @@
 
 > 可以看出，在子View需要消耗Touch事件的情况下，后续事件仍然会一直走ViewGroup的onInterceptTouchEvent。
 
-* 子View不需要消耗Touch事件，ViewGroup需要消耗Touch事件
+* 子View不需要消耗Touch事件，ViewGroup需要消耗Touch事件\(不在OnInterceptTouchEvent中拦截\)
 
 ![](/assets/事件分发4.png)
 
 > 子View不需要消耗Touch事件时，事件会交回给ViewGroup进行处理，如果此时ViewGroup需要处理Touch事件，则后续事件直接交给ViewGroup的onTouchEvent，不会再走onInterceptTouchEvent流程。
+>
+> 可见，如果ViewGroup需要消耗事件但是不在onInterceptTouchEvent中进行拦截，则只有在子View不消耗事件的情况下，其才能有机会消耗事件。
 
 * 子View和ViewGroup都不需要消耗Touch事件
 
