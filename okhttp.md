@@ -2,11 +2,9 @@
 
 拦截器作为OKHttp的核心，贯穿整个网络请求操作的始终。
 
-OKHttp使用List集合保存所有的拦截器，我们通过addInterceptor方式添加进来的拦截器也会被保存到这个集合中，在调用时，OkHttp采用栈的方式，来获取拦截器。也就是说，我们越晚添加进去的拦截器，会越早被调用。
+OKHttp使用List集合保存所有的拦截器，我们通过addInterceptor方式添加进来的拦截器也会被保存到这个集合中，在调用时，我们越晚添加进去的拦截器，会越早被调用。
 
 每一个被调用的拦截器，执行完intercept方法的逻辑之后，都需要调用chain.proceed\(\)将当前执行的request和其他数据传递给下一个拦截器。proceed方法最终也是调用下一个拦截器的intercept方法。
-
-
 
 #### addInterceptor和addNetworkInterceptor的区别
 
@@ -48,39 +46,10 @@ OKHttp使用List集合保存所有的拦截器，我们通过addInterceptor方�
 > * 因为addNetworkInterceptor添加到拦截器在response返回时先于CacheInterceptor\(真正执行缓存操作的拦截器\)被执行，我们可以在addNetworkInterceptor添加的拦截器中向Response Header中添加进缓存策略\(Cache-Control: max-age=xxx\)，这样在执行到CacheInterceptor读取到了缓存策略，就会进行本地缓存。
 >
 > 2、在断网的情况下，强制走缓存。
+>
 > * 在有网的情况下，我们强制走网络请求数据。同时，将请求的数据缓存一段时间。
 > * 在断网时，我们通过addInterceptor添加拦截器，强制请求走缓存\(Cache-Control: only-if-cached\)，这样即使在断网的情况下，我们也能够有数据。
 > * 注意必须是使用addInterceptor添加的拦截器，因为在断网情况下是不会走到addNetworkInterceptor添加的拦截器中运行的。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
