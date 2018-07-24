@@ -50,7 +50,7 @@ Http是应用层的协议，解决的是数据的包装问题，而Tcp和Udp是�
 
 Socket封装了对tcp/udp协议编程的接口。
 
-TCP/UDP协议基于网络层的IP协议\(需要借助IP协议才能实现传输\)，而应用层的HTTP协议又基于传输层的TCP/UDP协议\(需要借助TCP/UDP进行数据传输\)。
+**TCP/UDP协议基于网络层的IP协议\(需要借助IP协议才能实现传输\)，而应用层的HTTP协议又基于传输层的TCP/UDP协议\(需要借助TCP/UDP进行数据传输\)。**
 
 Socket连接又分为长连接和短连接，像Http请求这种就是短连接，每次建立一个Socket，请求完数据后又会把Socket关闭掉；
 
