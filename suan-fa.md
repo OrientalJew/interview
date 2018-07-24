@@ -7,18 +7,20 @@
 ```
     public static void BubbleSort(int[] arr) {
         int temp;
-        int last = arr.length - 1;
+        int last = 0;
         int k = arr.length - 1;
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < last; j++) {
+            for (int j = 1; j < arr.length - last; j++) {
                 if (arr[j] < arr[j - 1]) {
                     temp = arr[j];
                     arr[j] = arr[j - 1];
                     arr[j - 1] = temp;
-                    k = j;
+                    // 记录最后一次交换发生的位置
+                    k = j - 1;
                 }
             }
-            last = k;
+            // 获取后面有序序列的长度，减1是因为下标比实际位置小一位
+            last = arr.length - k - 1;
         }
     }
 ```
