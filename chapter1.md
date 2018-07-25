@@ -60,7 +60,7 @@ onAttach\(\)-&gt;onCreate\(\)-&gt;onCreateView\(\)-&gt;onViewCreated\(\)-&gt;onA
 
 ![](/assets/2015052808432374.png)
 
-* Context又称为上下文，其中包含了一些支持程序运行的基本信息；
+* Context又称为上下文，其中包含了一些支持程序运行环境的基本信息；
 * Context存在两个直接子类，一个是ContextWrapper，另一个是ContextImpl；ContextImpl实现了Context中的绝大多数方法，所有Context能做的操作，基本都是由ContextImpl来做的；而ContextWrapper则可以认为是对Context的功能的扩展，对于Context的基本功能，都通过代理一个ContextImpl实例来完成\(每次创建一个ContextWrapper的子类实例：Activity、Service和Application时，都会创建一个ContextImpl实例绑定到其中的mBase变量\)，ContextWrapper只管实现Context的扩展功能即可；
 
 * 一个应用中的Context数量 = Activity数量 + Service数量 + 1，其中的1指的是Application数量\(理论上在乘以2应该是可以的\)；
@@ -70,6 +70,7 @@ onAttach\(\)-&gt;onCreate\(\)-&gt;onCreateView\(\)-&gt;onViewCreated\(\)-&gt;onA
 * ContextThemeWrapper有一个直接子类，Activity，所以Activity和Service、Application的ContextWrapper都不一样，Activity又封装了一层主题样式；
 
 * Activity、Service和Application的Context在大多数情况下是通用的，因为它们都是通过ContextImpl去实现的，但在某些特殊情景下，要求只能是Activity类型的Context，比如启动Activity和弹出非系统类型的Dialog；
+
 * 出于安全考虑，Android不允许Activity或Dialog凭空出现，必须基于另一个Activity的基础上才能创建，以此来形成一个可靠的返回栈\(除非为其开辟一个新栈\)；
 
 
