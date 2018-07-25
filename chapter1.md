@@ -68,7 +68,8 @@ onAttach\(\)-&gt;onCreate\(\)-&gt;onCreateView\(\)-&gt;onViewCreated\(\)-&gt;onA
 * ContextWrapper有三个直接子类，分别是ContextThemeWrapper、Service和Application。
 
 * ContextThemeWrapper有一个直接子类，Activity，所以Activity和Service、Application的ContextWrapper都不一样，Activity又封装了一层主题样式；
-* 由于Activity、Service和Application的Context在大多数情况下是通用的，因为它们都是通过ContextImpl去实现的，但在某些特殊情景下，要求只能是Activity类型的Context，比如启动Activity和弹出非系统类型的Dialog；
+
+* Activity、Service和Application的Context在大多数情况下是通用的，因为它们都是通过ContextImpl去实现的，但在某些特殊情景下，要求只能是Activity类型的Context，比如启动Activity和弹出非系统类型的Dialog；
 * 出于安全考虑，Android不允许Activity或Dialog凭空出现，必须基于另一个Activity的基础上才能创建，以此来形成一个可靠的返回栈\(除非为其开辟一个新栈\)；
 
 
