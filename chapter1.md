@@ -36,8 +36,6 @@ ViewRootImpl保存当前View在window中的绘制、布局和动画数据，相�
 
 onCreate-&gt;\(onRestart\)onStart-&gt;onPostCreate-&gt;onResume\(\)-&gt;onPostResume\(\)-&gt;onPause\(\)-&gt;onStop\(\)-&gt;onDestory\(\)
 
-
-
 * DecorView 在Activity onCreate时被初始化；
 * 在onCreate方法中只是做View对象的初始化工作；
 * 真正对View进行测量绘制显示是在Activity resume时；
@@ -48,13 +46,13 @@ onCreate-&gt;\(onRestart\)onStart-&gt;onPostCreate-&gt;onResume\(\)-&gt;onPostRe
 
 Activity的创建过程，从**ActivityThread**的handleLaunchActivity被执行开始，其中包含两个重要方法：performLaunchActivity和handleResumeActivity方法；
 
-> performLaunchActivity：创建一个Activity实例，并返回；
+> performLaunchActivity：创建一个Activity实例，做一些变量初始化和绑定数据；
 
 1、先读取要创建的Activity的包名和类名，接着为Activity创建一个ContextImpl\(Context功能的基本类\)；
 
 2、创建一个新的Activity，将Activity交给ContextImpl；
 
-3、执行Activity的attach方法，将各种信息绑定到Activity中，包括了ContextImpl\(attachBaseContext方法被调\)、ActivityThread、title、Intent、上一个Activity等等信息，并且**此时会为Activity创建一个PhoneWindow实例**；
+3、**执行Activity的attach方法**，将各种信息绑定到Activity中，包括了ContextImpl\(attachBaseContext方法被调\)、ActivityThread、title、Intent、上一个Activity等等信息，并且**此时会为Activity创建一个PhoneWindow实例**；
 
 4、为Activity设置主题样式；
 
@@ -67,6 +65,20 @@ Activity的创建过程，从**ActivityThread**的handleLaunchActivity被执行�
 8、执行Activity的onPostCreate方法；
 
 9、将Activity实例交给ActivityThread进行保存管理；
+
+_**可以看到Activity的create过程中基本没做什么跟界面UI有关的操作，只是创建了PhoneWindow实例，绑定了些数据；**_
+
+> handleResumeActivity：真正去测量绘制UI操作；
+
+1、先执行了performResumeActivity方法，在这个方法中主要执行了Activity的performResume方法；
+
+2、在performResume方法中最先会去执行Activity的performRestart方法，而performRestart方法无非就是去执行**onRestart和onStart两个生命周期方法**；
+
+3、接着perforResume方法中会去**执行Activity的onResume方法，Fragment的onResume也在此时被执行**；
+
+4、执行Activity的**onPostResume**方法；
+
+在执行onResume操作之前Activity甚至还没开始为UI进行测量，这也是为什么在onResume中拿不到宽高！
 
 #### Fragment的生命周期
 
