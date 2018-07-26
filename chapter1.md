@@ -8,7 +8,7 @@ DecorView就是Activity根ViewGroup，是其中所有View和ViewGroup的parent�
 
 Activity中接收到系统的消息事件是通过WindowManagerService转接的，在系统消息事件发生时\(比如Touch事件\)，WindowManagerService将回调Activity中对应的方法\(dispatchTouchEvent\)。
 
-ViewRootImpl保存当前View在window中的绘制、布局和动画数据，相当于View与WindowManager之间的协议类；
+ViewRootImpl保存当前View在window中的绘制、布局和动画数据，相当于View与WindowManager之间的协议类，每一个Activity对应一个ViewRootImpl；
 
 #### Activity的启动模式
 
@@ -78,7 +78,11 @@ _**可以看到Activity的create过程中基本没做什么跟界面UI有关的�
 
 4、执行Activity的**onPostResume**方法；
 
-在执行onResume操作之前Activity甚至还没开始为UI进行测量，这也是为什么在onResume中拿不到宽高！
+5、拿到当前窗口的DecorView，创建ViewRootImpl实例开始为UI进行测量绘制\(ViewRootImpl管理者View的各种生命周期方法\)；
+
+6、
+
+在执行onPostResume操作之后Activity甚至还没开始为UI进行测量，这也是为什么在onResume中拿不到宽高！
 
 #### Fragment的生命周期
 
