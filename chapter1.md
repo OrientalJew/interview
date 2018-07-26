@@ -56,7 +56,7 @@ Activity的创建过程，从**ActivityThread**的handleLaunchActivity被执行�
 
 4、为Activity设置主题样式；
 
-**5、执行Activity的onCreate方法；**
+**5、执行Activity的onCreate方法，并在其中创建DercorView的实例；**
 
 **6、执行Activity的onStart方法；**
 
@@ -78,11 +78,17 @@ _**可以看到Activity的create过程中基本没做什么跟界面UI有关的�
 
 4、执行Activity的**onPostResume**方法；
 
-5、拿到当前窗口的DecorView，创建ViewRootImpl实例开始为UI进行测量绘制\(ViewRootImpl管理者View的各种生命周期方法\)；
+5、拿到当前窗口的DecorView，交给WindowManagerImpl管理；
 
-6、
+6、在WindowManagerImpl的addView方法中会为DecorView设置WindowManager.LayoutParams类型的参数；
 
-在执行onPostResume操作之后Activity甚至还没开始为UI进行测量，这也是为什么在onResume中拿不到宽高！
+**7、同样在addView方法中，创建ViewRootImpl实例开始为准备对UI进行测量绘制\(ViewRootImpl管理者View的各种生命周期方法\)；**
+
+8、调用ViewRootImpl的setView方法将DecorView交给其进行绘制；
+
+9、在ViewRootImpl的setView方法中，会调用requestLayout方法，最终会调用其performTraversals方法，在这个方法中真正去进行UI的测量布局和绘制操作；
+
+_**在执行onPostResume操作之后Activity甚至还没开始为UI进行测量，这也是为什么在onResume中拿不到宽高！**_
 
 #### Fragment的生命周期
 
