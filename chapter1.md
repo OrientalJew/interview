@@ -82,7 +82,7 @@ _**可以看到Activity的create过程中基本没做什么跟界面UI有关的�
 
 6、在WindowManagerImpl的addView方法中会为DecorView设置WindowManager.LayoutParams类型的参数；
 
-**7、同样在addView方法中，创建ViewRootImpl实例开始为准备对UI进行测量绘制\(ViewRootImpl管理者View的各种生命周期方法\)；**
+**7、同样在addView方法中，创建ViewRootImpl实例\(同时会创建mAttachInfo实例\)开始为准备对UI进行测量绘制\(ViewRootImpl管理者View的各种生命周期方法\)；**
 
 8、调用ViewRootImpl的setView方法将DecorView交给其进行绘制；
 
