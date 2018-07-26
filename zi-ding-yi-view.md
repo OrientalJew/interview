@@ -1,6 +1,6 @@
 #### View绘制流程
 
-> ViewRootImpl在performTraversals方法中执行performDraw方法开始绘制窗口，接着执行其中的draw方法，在draw方法中，会执行到drawSoftware方法，而在drawSoftware方法中，将会执行DecorView的draw\(canvas\)方法，开启了全程的绘制！
+> ViewRootImpl在performTraversals方法中执行performDraw方法开始绘制窗口，接着执行其中的draw方法，在draw方法中，会执行到drawSoftware方法，而在drawSoftware方法中，将会创建一个Canvas实例**\(此处的Canvas是通过Surface调用lockCanvas创建出来的！\)**，然后调用DecorView的draw\(canvas\)方法，开启了全程的绘制！
 
 1、ViewRootImpl中调用DecorView.draw\(1\)；
 
