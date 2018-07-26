@@ -37,7 +37,7 @@ ViewRootImpl保存当前View在window中的绘制、布局和动画数据，相�
 onCreate-&gt;\(onRestart\)onStart-&gt;onPostCreate-&gt;onResume\(\)-&gt;onPostResume\(\)-&gt;onPause\(\)-&gt;onStop\(\)-&gt;onDestory\(\)
 
 * DecorView 在Activity onCreate时被初始化；
-* 在onCreate方法中只是做View对象的初始化工作；
+* 在onCreate方法中只是做DecorView对象的初始化工作；
 * 真正对View进行测量绘制显示是在Activity resume时；
 * resume的过程中，ActivityThread调用了handleResumeActivity，在其中调用addView方法创建ViewRootImpl，并将DecorView传递给ViewRootImpl进行管理；
 * ViewRootImpl是View系统的核心类，其管理了View的各个生命周期\(measure、Layout、Draw\)，负责对attachInfo进行初始化；
