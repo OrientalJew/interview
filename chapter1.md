@@ -34,7 +34,9 @@ ViewRootImpl保存当前View在window中的绘制、布局和动画数据，相�
 
 #### Activity的生命周期
 
-onCreate-&gt;onPostCreate-&gt;\(onRestart\)onStart-&gt;onResume\(\)-&gt;onPostResume\(\)-&gt;onPause\(\)-&gt;onStop\(\)-&gt;onDestory\(\)
+onCreate-&gt;\(onRestart\)onStart-&gt;onPostCreate-&gt;onResume\(\)-&gt;onPostResume\(\)-&gt;onPause\(\)-&gt;onStop\(\)-&gt;onDestory\(\)
+
+
 
 * DecorView 在Activity onCreate时被初始化；
 * 在onCreate方法中只是做View对象的初始化工作；
@@ -42,7 +44,29 @@ onCreate-&gt;onPostCreate-&gt;\(onRestart\)onStart-&gt;onResume\(\)-&gt;onPostRe
 * resume的过程中，ActivityThread调用了handleResumeActivity，在其中调用addView方法创建ViewRootImpl，并将DecorView传递给ViewRootImpl进行管理；
 * ViewRootImpl是View系统的核心类，其管理了View的各个生命周期\(measure、Layout、Draw\)，负责对attachInfo进行初始化；
 
+#### Activity的创建过程
 
+Activity的创建过程，从**ActivityThread**的handleLaunchActivity被执行开始，其中包含两个重要方法：performLaunchActivity和handleResumeActivity方法；
+
+> performLaunchActivity：创建一个Activity实例，并返回；
+
+1、先读取要创建的Activity的包名和类名，接着为Activity创建一个ContextImpl\(Context功能的基本类\)；
+
+2、创建一个新的Activity，将Activity交给ContextImpl；
+
+3、执行Activity的attach方法，将各种信息绑定到Activity中，包括了ContextImpl\(attachBaseContext方法被调\)、ActivityThread、title、Intent、上一个Activity等等信息，并且**此时会为Activity创建一个PhoneWindow实例**；
+
+4、为Activity设置主题样式；
+
+**5、执行Activity的onCreate方法；**
+
+**6、执行Activity的onStart方法；**
+
+7、如果Activity之前被销毁过，内存启动下，则执行onRestoreInstanceState方法
+
+8、执行Activity的onPostCreate方法；
+
+9、将Activity实例交给ActivityThread进行保存管理；
 
 #### Fragment的生命周期
 
