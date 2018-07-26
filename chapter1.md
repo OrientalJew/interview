@@ -44,6 +44,8 @@ onCreate-&gt;\(onRestart\)onStart-&gt;onPostCreate-&gt;onResume\(\)-&gt;onPostRe
 
 #### Activity的创建过程
 
+> ActivityThread就是UI线程，一个程序的启动从ActivityThread的main方法被调用开始。
+
 Activity的创建过程，从**ActivityThread**的handleLaunchActivity被执行开始，其中包含两个重要方法：performLaunchActivity和handleResumeActivity方法；
 
 > performLaunchActivity：创建一个Activity实例，做一些变量初始化和绑定数据；
