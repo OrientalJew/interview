@@ -17,7 +17,7 @@ FragmentPagerAdapter不会销毁Fragment实例，只是销毁Fragment的视图�
 
 FragmentStatePagerAdapter会完全销毁Fragment实例，在Fragment被销毁时，会执行到onDestory方法，如果要恢复成员变量，只能通过onSaveInstanceState来进行；
 
-#### 
+
 
 
 
