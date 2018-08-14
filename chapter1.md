@@ -10,7 +10,7 @@ Activity中接收到系统的消息事件是通过InputManagerService转接的�
 
 ViewRootImpl保存当前View在window中的绘制、布局和动画数据，相当于View与WindowManager之间的控制器，每一个Activity对应一个ViewRootImpl；
 
-ViewRootImpl可以认为是View和各种系统服务之间的Controller，由系统服务\(WindowManagerService和InputManagerService\)提供数据，通过ViewRootImpl控制View的绘制、布局和测量，以及事件的监听，最终展示到Activity之上；
+ViewRootImpl可以认为是View和各种系统服务之间的Controller，由系统服务\(WindowManagerService和InputManagerService\)提供数据，通过ViewRootImpl控制View的绘制、布局和测量\(WindowManagerService\)，以及事件的监听\(InputManagerService\)，最终展示到Activity之上；
 
 #### Activity的启动模式
 
