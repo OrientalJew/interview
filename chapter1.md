@@ -121,6 +121,8 @@ onAttach\(\)-&gt;onCreate\(\)-&gt;onCreateView\(\)-&gt;onViewCreated\(\)-&gt;onA
 * Context又称为上下文，其中包含了一些支持程序运行环境的基本信息；
 * Context存在两个直接子类，一个是ContextWrapper，另一个是ContextImpl；ContextImpl实现了Context中的绝大多数方法，所有Context能做的操作，基本都是由ContextImpl来做的；而ContextWrapper则可以认为是对Context的功能的扩展，对于Context的基本功能，都通过代理一个ContextImpl实例来完成\(每次创建一个ContextWrapper的子类实例：Activity、Service和Application时，都会创建一个ContextImpl实例绑定到其中的mBase变量\)，ContextWrapper只管实现Context的扩展功能即可；
 
+\_attachBaseContext中的mBase就是ContextImpl，这个实例是在onCreate时期被创建的！\_
+
 * 一个应用中的Context数量 = Activity数量 + Service数量 + 1，其中的1指的是Application数量\(理论上在乘以2应该是可以的\)；
 
 * ContextWrapper有三个直接子类，分别是ContextThemeWrapper、Service和Application。
