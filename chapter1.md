@@ -131,7 +131,7 @@ _**attachBaseContext方法中的mBase就是ContextImpl，这个实例是在onCre
 
 * Activity、Service和Application的Context在大多数情况下是通用的，因为它们都是通过ContextImpl去实现的，但在某些特殊情景下，要求只能是Activity类型的Context，比如启动Activity和弹出非系统类型的Dialog；
 
-* 出于安全考虑，Android不允许Activity或Dialog凭空出现，必须基于另一个Activity的基础上才能创建，以此来形成一个可靠的返回栈\(除非为其开辟一个新栈\)；
+* 出于安全考虑，Android不允许Activity或Dialog凭空出现，必须基于另一个Activity的基础上才能创建，以此来形成一个可靠的返回栈\(每次创建一个新的Activity，都需要传入上一个Activity；除非为其开辟一个新栈\)；
 
 
 
