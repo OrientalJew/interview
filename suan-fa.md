@@ -72,6 +72,7 @@
             int j = i - 1;
             for (; j >= 0; j--) {
                 if (arr[j] > temp) {
+                    // 往后错位，为插入元素腾出位置
                     arr[j + 1] = arr[j];
                 } else {
                     break;
