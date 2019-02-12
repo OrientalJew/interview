@@ -1,8 +1,4 @@
-*  \[基本数据类型\]\(/chapter1/xian-cheng.md\)
 
 
-
-
-
-
+[线程](/chapter1/xian-cheng.md)
 
