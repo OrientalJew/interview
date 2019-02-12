@@ -1,3 +1,2 @@
-# My Awesome Book
+\* \[基本数据类型\]\(/chapter1/xian-cheng.md\)
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
