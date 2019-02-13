@@ -4,7 +4,7 @@
 
 > onstart\(\)、onPostCreate也是可以的，都是在Activity被绑定之前执行；
 
-1，子线程理论上是能够更新自己的UI的，前提是拥有自己的ViewRootImpl；
+1，子线程理论上是能够更新**自己**的UI的，前提是拥有自己的ViewRootImpl；
 
 2，每一个Activity都有自己的ViewRootImpl，在handleResumeActivity时，ActivityThread会将当前将要显示的Activity的DecorView
 
@@ -30,8 +30,4 @@ mThread = Thread.currentThread();
 可以知道，当在其他线程创建的View拥有自己的ViewRootImpl，即使在非UI线程，也是能够更新自己的UI的；
 
 _因为ViewRootImpl实在Resume之后才会将创建，也就是说，在resume之前，我们在子线程更新UI，是没有ViewRootImpl来进行检查的，所以onResume之前，我们可以在子线程更新UI；_
-
-
-
-
 
