@@ -27,7 +27,31 @@ mThread = Thread.currentThread();
     }
 ```
 
-可以知道，当在其他线程创建的View拥有自己的ViewRootImpl，即使在非UI线程，也是能够更新自己的UI的；
+可以知道，当在其他线程创建的View拥有自己的ViewRootImpl，即使在非UI线程，也是能够更新自己的UI的\(因为在创建ViewRootImpl时，并不是在UI线程，所以mThread绑定的是其他线程\)；
 
 _因为ViewRootImpl实在Resume之后才会将创建，也就是说，在resume之前，我们在子线程更新UI，是没有ViewRootImpl来进行检查的，所以onResume之前，我们可以在子线程更新UI；_
+
+
+
+**创建View自己的ViewRootImpl**
+
+```
+class NonUiThread extends Thread{
+      @Override
+      public void run() {
+         Looper.prepare();
+         TextView tx = new TextView(MainActivity.this);
+         tx.setText("non-UiThread update textview");
+ 
+         WindowManager windowManager = MainActivity.this.getWindowManager();
+         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+             200, 200, 200, 200, WindowManager.LayoutParams.FIRST_SUB_WINDOW,
+                 WindowManager.LayoutParams.TYPE_TOAST,PixelFormat.OPAQUE);
+         windowManager.addView(tx, params); 
+         Looper.loop();
+     }
+ }
+```
+
+
 
