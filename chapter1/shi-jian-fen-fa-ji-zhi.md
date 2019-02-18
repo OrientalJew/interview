@@ -7,8 +7,8 @@
 **一次触摸屏幕事件分发的过程：**
 
 > 触摸事件是由InputManagerService分发给Activity的，不是WindowManagerService！
-
-> 在ViewRootImpl的setView方法被调用时，WindowInputEventReceiver被创建，并绑定了InputChannel用来接收Touch事件，当事件到来时，通过InputManagerService将事件通知给WindowInputEventReceiver，再通过ViewRootImpl来分发给View的dispatchTouchEvent的。 [https://yq.aliyun.com/articles/41488](https://yq.aliyun.com/articles/41488%29%29\)
+>
+> 在ViewRootImpl的setView方法被调用时，WindowInputEventReceiver被创建，并绑定了InputChannel用来接收Touch事件，当事件到来时，通过InputManagerService将事件通知给WindowInputEventReceiver，再通过ViewRootImpl来分发给View的dispatchTouchEvent的。https://yq.aliyun.com/articles/41488
 
 Touch事件传递给View：
 
